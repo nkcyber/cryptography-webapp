@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {  withRouter,
+          Redirect,
+          Route } from "react-router";
+import { withLayout } from "./layout"
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,17 +11,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <h1>yeah</h1>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Route exact path="/">
+          <Redirect to="/ceaser-cipher" />
+        </Route>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(withLayout(App));
