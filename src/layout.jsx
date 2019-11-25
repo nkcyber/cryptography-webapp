@@ -26,7 +26,7 @@ function withLayout (WrappedComponent) {
       return (
         <>
           <Header/>
-          <div style={{ width: '90vw', height: '80vh', marginLeft: 'auto', marginRight: 'auto', }} className="text-center">
+          <div style={{ width: '90vw', height: '80vh', marginLeft: 'auto', marginRight: 'auto', maxWidth: "1280px"}} className="text-center">
             <div style={{float:"left"}}>
               <WrappedComponent {...this.props} />
             </div>
