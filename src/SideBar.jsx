@@ -14,7 +14,7 @@ export function SideBar() {
         <Link to="/frequency-analysis">Frequency Analysis</Link>
       </li>
       <li class="list-group-item">
-        <Link to="/ceasar-cipher">Ceaser Cipher</Link>
+        <Link to="/caesar-cipher">Caesar Cipher</Link>
       </li>
       <li class="list-group-item">
         <Link to="/multiplicative-cipher">Multiplicative</Link>

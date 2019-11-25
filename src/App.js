@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/">
-          <Redirect to="/ceaser-cipher" />
+          <Redirect to="/caesar-cipher"/>
         </Route>
       </div>
     );
