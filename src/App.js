@@ -60,6 +60,15 @@ class App extends Component {
               decryptionFn={(str, key) => crypto.multiplicativeDecrypt(str, key)}
             />
           </Route>
+          <Route path="/masc">
+            <GenericCipher
+              buffers={this.state.buffers}
+              options={this.state.options}
+              onBufferUpdate={this.onBufferUpdate}
+              encryptionFn={(str, key) => crypto.masc(str, key)}
+              decryptionFn={(str, key) => crypto.mascDecrypt(str, key)}
+            />
+          </Route>
           <Route path="/affine-cipher">
             <AffineCipher
               buffers={this.state.buffers}
