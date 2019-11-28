@@ -8,6 +8,7 @@ import GenericCipher from "./GenericCipher"
 import { produce } from 'immer';
 import logo from './logo.svg';
 import './App.css';
+import * as crypto from './crypto-functions.js'
 
 
 class App extends Component {
@@ -42,7 +43,7 @@ class App extends Component {
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
-              encryptionFn={(str) => str.toUpperCase()}
+              encryptionFn={(str, key) => crypto.additive(str, key)}
               decryptionFn={(str) => str.toLowerCase()}
             />
           </Route>
@@ -54,8 +55,8 @@ class App extends Component {
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
-              encryptionFn={(str) => str.toUpperCase()}
-              decryptionFn={(str) => str.toLowerCase()}
+              encryptionFn={(str, key) => crypto.multiplicativeEncrypt(str, key)}
+              decryptionFn={(str, key) => crypto.multiplicativeDecrypt(str, key)}
             />
           </Route>
         </Switch>
