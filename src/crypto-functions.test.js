@@ -2,7 +2,7 @@ import * as crypto from './crypto-functions.js'
 
 
 it('removes punctuation', () => {
-  expect(crypto.removePunctuation("test..2341&*")).toEqual('test')
+  expect(crypto.cleanupString("test..2341&*")).toEqual('test')
 })
 
 it('formats in blocks of length 5 by defualt', () => {
