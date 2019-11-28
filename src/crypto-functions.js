@@ -59,6 +59,15 @@ export function additiveInv(str, key) {
   return mapAlphabet(str, newAlph, alph);
 }
 
+export function masc(str, key) {
+  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return mapAlphabet(str, alph, key);
+}
+
+export function mascDecrypt(str, key) {
+  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return mapAlphabet(str, key, alph);
+}
 
 export function multiplicativeEncrypt(str, key)  {
   return R.map(a => intToChar((charToInt(a) * key) % 26), str).join('')
