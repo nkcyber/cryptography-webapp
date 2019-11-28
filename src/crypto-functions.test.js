@@ -20,3 +20,15 @@ it('correctly enciphers', () => {
 it('correctly deciphers', () => {
   expect(crypto.multiplicativeDecrypt("RUMRONE", 5)).toEqual('TESTING')
 })
+
+it('formats in blocks of length 5 by defualt', () => {
+  expect(crypto.blockFormat("testing the formatting")).toEqual('testi ngthe forma tting')
+})
+
+it('alphabet shifts', () => {
+  expect(crypto.additive("abc", 5)).toEqual('fgh'.toUpperCase())
+})
+
+it('maps alphabets', () => {
+  expect(crypto.mapAlphabet("abc", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "FGHIJKLMNOPQRSTUVWXYZABCDE")).toEqual('FGH')
+})
