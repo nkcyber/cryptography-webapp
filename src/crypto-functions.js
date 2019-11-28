@@ -20,12 +20,12 @@ export function additive(str, key) {
   return mapAlphabet(str, alph, newAlph);
 }
 
-export function multiplicitave(str, key) {
-
+export function affineEncrypt(str, mKey, aKey) {
+  return additive(multiplicativeEncrypt(str, mKey), aKey);
 }
 
-export function affine(str, mKey, aKey) {
-  return additive(multiplicitave(str, mKey), aKey);
+export function affineDecrypt(str, mKey, aKey) {
+  return additive(multiplicativeDecrypt(str, mKey), aKey);
 }
 
 export function charToInt(chr) {
