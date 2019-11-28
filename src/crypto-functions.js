@@ -18,12 +18,13 @@ export function makeDictionary() {
 
 export function mapAlphabet(str, a1, a2) {
   let dict = R.zipObj(a1, a2);
-  return str.replace(/[a-z]/gi, m => dict[m]);
+  return cleanupString(str).replace(/[A-Z]/g, m => dict[m]);
 }
 
 export function additive(str, key) {
-  let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  return R.concat(R.drop(key, alph), R.take(key, alph));
+  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const newAlph = R.concat(R.drop(key, alph), R.take(key, alph));
+  return mapAlphabet(str, alph, newAlph);
 }
 
 export function multiplicitave(str, key) {
