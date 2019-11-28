@@ -44,7 +44,7 @@ class App extends Component {
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
               encryptionFn={(str, key) => crypto.additive(str, key)}
-              decryptionFn={(str) => str.toLowerCase()}
+              decryptionFn={(str, key) => crypto.additiveInv(str, key)}
             />
           </Route>
           <Route path="/frequency-analysis">
