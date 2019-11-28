@@ -5,6 +5,7 @@ import {  withRouter,
           Route } from "react-router";
 import { withLayout } from "./layout"
 import GenericCipher from "./GenericCipher"
+import AffineCipher from "./AffineCipher"
 import { produce } from 'immer';
 import logo from './logo.svg';
 import './App.css';
@@ -57,6 +58,13 @@ class App extends Component {
               onBufferUpdate={this.onBufferUpdate}
               encryptionFn={(str, key) => crypto.multiplicativeEncrypt(str, key)}
               decryptionFn={(str, key) => crypto.multiplicativeDecrypt(str, key)}
+            />
+          </Route>
+          <Route path="/affine-cipher">
+            <AffineCipher
+              buffers={this.state.buffers}
+              options={this.state.options}
+              onBufferUpdate={this.onBufferUpdate}
             />
           </Route>
         </Switch>

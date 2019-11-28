@@ -19,6 +19,9 @@ export function SideBar() {
       <li class="list-group-item">
         <Link to="/multiplicative-cipher">Multiplicative</Link>
       </li>
+      <li class="list-group-item">
+        <Link to="/affine-cipher">Affine</Link>
+      </li>
     </ul>
     </>
   )
