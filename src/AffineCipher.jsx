@@ -25,7 +25,7 @@ const GenericCipher = (props) => {
       <br/>
       <Button
         block
-        onClick={() => props.onBufferUpdate('encryption', crypto.affineDecrypt(encryption, keyM, keyA), props.global)}
+        onClick={() => props.onBufferUpdate('encryption', crypto.affineDecrypt(decryption, keyM, keyA), props.global)}
       >
         Decrypt
       </Button>

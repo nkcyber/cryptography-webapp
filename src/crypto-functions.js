@@ -25,7 +25,7 @@ export function affineEncrypt(str, mKey, aKey) {
 }
 
 export function affineDecrypt(str, mKey, aKey) {
-  return additiveInv(multiplicativeDecrypt(str, mKey), aKey);
+  return multiplicativeDecrypt(additiveInv(str, aKey), mKey);
 }
 
 export function charToInt(chr) {
