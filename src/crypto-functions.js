@@ -20,6 +20,12 @@ export function additive(str, key) {
   return mapAlphabet(str, alph, newAlph);
 }
 
+export function additiveInv(str, key) {
+  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const newAlph = R.concat(R.drop(key, alph), R.take(key, alph));
+  return mapAlphabet(str, newAlph, alph);
+}
+
 export function multiplicitave(str, key) {
 
 }
