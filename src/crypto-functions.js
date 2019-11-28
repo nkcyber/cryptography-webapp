@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
 export function blockFormat(str, len=5) {
-  return removePunctuation(str).match(new RegExp('.{1,' + len + '}', 'g')).reduce((a, b) => a + " " + b);
+  return cleanupString(str).match(new RegExp('.{1,' + len + '}', 'g')).reduce((a, b) => a + " " + b);
 }
 
 export function cleanupString(str) {
@@ -42,6 +42,27 @@ export function intToChar(int) {
   return String.fromCharCode(int + 65)
 }
 
+function xgcd(a, b) {
+
+  if (b == 0) {
+    return [1, 0, a];
+  }
+
+  let temp = xgcd(b, a % b);
+  let x = temp[0];
+  let y = temp[1];
+  let d = temp[2];
+  return [y, x-y*Math.floor(a/b), d];
+ }
+
+export function modInv(a, m)  {
+  return (xgcd(a, m)[0] + m) % 26
+}
+
 export function multiplicativeEncrypt(str, key)  {
-  return R.map(a => intToChar((charToInt(a) * key) % 26), str)
+  return R.map(a => intToChar((charToInt(a) * key) % 26), str).join('')
+}
+
+export function multiplicativeDecrypt(str, key)  {
+  return R.map(a => intToChar((charToInt(a) * modInv(key, 26)) % 26), str).join('')
 }

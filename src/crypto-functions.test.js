@@ -14,5 +14,9 @@ it('formats in blocks of length given by arguement', () => {
 })
 
 it('correctly enciphers', () => {
-  expect(crypto.multiplicativeEncrypt("testing", 5)).toEqual('rumrone')
+  expect(crypto.multiplicativeEncrypt("testing", 5)).toEqual('RUMRONE')
+})
+
+it('correctly deciphers', () => {
+  expect(crypto.multiplicativeDecrypt("RUMRONE", 5)).toEqual('TESTING')
 })
