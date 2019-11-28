@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import {add} from "ramda";
 
 export function blockFormat(str, len=5) {
   return removePunctuation(str).match(new RegExp('.{1,' + len + '}', 'g')).reduce((a, b) => a + " " + b);
@@ -32,5 +33,5 @@ export function multiplicitave(str, key) {
 }
 
 export function affine(str, mKey, aKey) {
-
+  return additive(multiplicitave(str, mKey), aKey);
 }
