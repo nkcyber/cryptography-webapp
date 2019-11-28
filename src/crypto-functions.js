@@ -9,14 +9,6 @@ export function cleanupString(str) {
   return str.replace(/[^a-zA-Z]+/g, '').toUpperCase()
 }
 
-export function formatOutput(str) {
-
-}
-
-export function makeDictionary() {
-
-}
-
 export function mapAlphabet(str, a1, a2) {
   let dict = R.zipObj(a1, a2);
   return cleanupString(str).replace(/[A-Z]/g, m => dict[m]);
