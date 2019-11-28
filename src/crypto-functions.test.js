@@ -12,3 +12,7 @@ it('formats in blocks of length 5 by defualt', () => {
 it('formats in blocks of length given by arguement', () => {
   expect(crypto.blockFormat("testing the formatting", 2)).toEqual('te st in gt he fo rm at ti ng')
 })
+
+it('correctly enciphers', () => {
+  expect(crypto.multiplicativeEncrypt("testing", 5)).toEqual('rumrone')
+})
