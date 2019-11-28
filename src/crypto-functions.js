@@ -53,6 +53,13 @@ export function modInv(a, m)  {
   return (xgcd(a, m)[0] + m) % 26
 }
 
+export function additiveInv(str, key) {
+  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const newAlph = R.concat(R.drop(key, alph), R.take(key, alph));
+  return mapAlphabet(str, newAlph, alph);
+}
+
+
 export function multiplicativeEncrypt(str, key)  {
   return R.map(a => intToChar((charToInt(a) * key) % 26), str).join('')
 }
