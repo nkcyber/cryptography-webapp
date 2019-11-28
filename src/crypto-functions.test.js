@@ -13,16 +13,24 @@ it('formats in blocks of length given by arguement', () => {
   expect(crypto.blockFormat("testing the formatting", 2)).toEqual('TE ST IN GT HE FO RM AT TI NG')
 })
 
-it('correctly enciphers', () => {
-  expect(crypto.multiplicativeEncrypt("testing", 5)).toEqual('RUMRONE')
+describe('multiplicative', () => {
+  it('correctly enciphers', () => {
+    expect(crypto.multiplicativeEncrypt("testing", 5)).toEqual('RUMRONE')
+  })
+
+  it('correctly deciphers', () => {
+    expect(crypto.multiplicativeDecrypt("RUMRONE", 5)).toEqual('TESTING')
+  })
 })
 
-it('correctly deciphers', () => {
-  expect(crypto.multiplicativeDecrypt("RUMRONE", 5)).toEqual('TESTING')
-})
+describe('additive', () => {
+  it('correctly enciphers', () => {
+    expect(crypto.additive("testing", 3)).toEqual('WHVWLQJ')
+  })
 
-it('formats in blocks of length 5 by defualt', () => {
-  expect(crypto.blockFormat("testing the formatting")).toEqual('testi ngthe forma tting')
+  it('correctly deciphers', () => {
+    expect(crypto.additiveInv("WHVWLQJ", 3)).toEqual('TESTING')
+  })
 })
 
 it('alphabet shifts', () => {
