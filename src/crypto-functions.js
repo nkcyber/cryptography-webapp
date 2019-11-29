@@ -27,11 +27,11 @@ export function additiveDecrypt(str, key) {
 }
 
 export function affineEncrypt(str, mKey, aKey) {
-  return additive(multiplicativeEncrypt(str, mKey), aKey);
+  return additiveEncrypt(multiplicativeEncrypt(str, mKey), aKey);
 }
 
 export function affineDecrypt(str, mKey, aKey) {
-  return multiplicativeDecrypt(additiveInv(str, aKey), mKey);
+  return multiplicativeDecrypt(additiveDecrypt(str, aKey), mKey);
 }
 
 export function charToInt(chr) {
