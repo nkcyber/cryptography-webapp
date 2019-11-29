@@ -6,6 +6,7 @@ import {  withRouter,
 import { withLayout } from "./layout"
 import GenericCipher from "./GenericCipher"
 import AffineCipher from "./AffineCipher"
+import FrequencyGraph from "./FrequencyGraph"
 import { produce } from 'immer';
 import logo from './logo.svg';
 import './App.css';
@@ -49,7 +50,10 @@ class App extends Component {
             />
           </Route>
           <Route path="/frequency-analysis">
-            <p></p>
+            <FrequencyGraph
+              buffers={this.state.buffers}
+              options={this.state.options}
+            />
           </Route>
           <Route path="/multiplicative-cipher">
             <GenericCipher
