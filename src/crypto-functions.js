@@ -114,3 +114,14 @@ export function vigenereDecrypt(str, key) {
   }
   return outStr
 }
+
+//If the letter doesnt exist it's value is undefined in the returned dictionary
+export function getFrequencies(str) {
+  let counter = str => {
+    return str.split('').reduce((total, letter) => {
+      total[letter] ? total[letter]++ : total[letter] = 1;
+      return total;
+    }, {});
+  };
+  return counter(str);
+}
