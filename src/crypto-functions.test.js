@@ -48,3 +48,7 @@ it('vigenere encrypt', () => {
 it('vigenere decrypt', () => {
   expect(crypto.vigenereDecrypt("ECACCC", "cba")).toEqual('CBAABC')
 })
+
+it('Frequency count', () => {
+  expect(crypto.getFrequencies("ECACCC")["C"]).toEqual(4)
+})
