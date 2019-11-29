@@ -6,6 +6,7 @@ import {  withRouter,
 import { withLayout } from "./layout"
 import GenericCipher from "./GenericCipher"
 import AffineCipher from "./AffineCipher"
+import ColumnarTransposition from "./ColumnarTransposition"
 import FrequencyGraph from "./FrequencyGraph"
 import { produce } from 'immer';
 import logo from './logo.svg';
@@ -75,6 +76,13 @@ class App extends Component {
           </Route>
           <Route path="/affine-cipher">
             <AffineCipher
+              buffers={this.state.buffers}
+              options={this.state.options}
+              onBufferUpdate={this.onBufferUpdate}
+            />
+          </Route>
+          <Route path="/columnar-transposition">
+            <ColumnarTransposition
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}

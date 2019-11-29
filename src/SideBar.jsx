@@ -28,6 +28,9 @@ export function SideBar() {
       <li className="list-group-item">
         <Link to="/vigenere-cipher">Vigenère</Link>
       </li>
+      <li className="list-group-item">
+        <Link to="/columnar-transposition">Columnar Transposition</Link>
+      </li>
     </ul>
     </>
   )
