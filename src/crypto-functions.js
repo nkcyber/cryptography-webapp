@@ -125,3 +125,34 @@ export function getFrequencies(str) {
   };
   return counter(str);
 }
+
+export function columnarEncrypt(str, key) {
+  str = cleanupString(str);
+  key = cleanupString(key);
+  while(str.length % key.length != 0) {
+    str += "Q";
+  }
+  let cols = new Array(key.length).fill("")
+  let k = 0;
+  for(let i = 0; i < (str.length / key.length); i++) {
+    for(let j = 0; j < key.length; j++, k++) {
+      cols[j] += str.charAt(k);
+    }
+  }
+
+  let pairs = []
+  for(let l = 0; l < key.length; l++){
+    pairs.push([charToInt(key.charAt(l)), cols[l]]);
+  }
+  pairs = pairs.sort(function(a,b) {
+    return a[0] - b[0];
+  });
+
+  let out = ""
+  pairs.forEach(pair => {out += pair[1]});
+  return out;
+}
+
+export function columnarDecrypt() {
+
+}
