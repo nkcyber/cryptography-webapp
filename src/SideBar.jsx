@@ -25,6 +25,9 @@ export function SideBar() {
       <li className="list-group-item">
         <Link to="/affine-cipher">Affine</Link>
       </li>
+      <li className="list-group-item">
+        <Link to="/vigenere-cipher">Vigenère</Link>
+      </li>
     </ul>
     </>
   )

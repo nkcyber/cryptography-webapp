@@ -80,6 +80,15 @@ class App extends Component {
               onBufferUpdate={this.onBufferUpdate}
             />
           </Route>
+          <Route path="/vigenere-cipher">
+            <GenericCipher
+              buffers={this.state.buffers}
+              options={this.state.options}
+              onBufferUpdate={this.onBufferUpdate}
+              encryptionFn={(str, key) => crypto.vigenereEncrypt(str, key)}
+              decryptionFn={(str, key) => crypto.vigenereDecrypt(str, key)}
+            />
+          </Route>
         </Switch>
       </div>
     );
