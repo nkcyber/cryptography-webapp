@@ -44,3 +44,7 @@ it('builds vigenere key', () => {
 it('vigenere encrypt', () => {
   expect(crypto.vigenereEncrypt("cbaabc", "cba")).toEqual('ECACCC')
 })
+
+it('vigenere decrypt', () => {
+  expect(crypto.vigenereDecrypt("ECACCC", "cba")).toEqual('CBAABC')
+})

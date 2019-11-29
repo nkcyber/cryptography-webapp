@@ -100,6 +100,17 @@ export function vigenereEncrypt(str, key) {
   return outStr
 }
 
-export function vigenereDecrypt() {
+export function vigenereDecrypt(str, key) {
+  str = cleanupString(str);
+  key = getVigenereKey(str, cleanupString(key));
+  let outStr = "";
+  while(str.length > 0) {
+    let tempStr = str.substr(0,1);
+    str = str.substr(1);
+    let tempKey = charToInt(key.substr(0,1));
+    key = key.substr(1);
 
+    outStr += additiveDecrypt(tempStr, tempKey);
+  }
+  return outStr
 }
