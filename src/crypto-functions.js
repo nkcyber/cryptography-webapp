@@ -14,10 +14,16 @@ export function mapAlphabet(str, a1, a2) {
   return cleanupString(str).replace(/[A-Z]/g, m => dict[m]);
 }
 
-export function additive(str, key) {
+export function additiveEncrypt(str, key) {
   const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const newAlph = R.concat(R.drop(key, alph), R.take(key, alph));
   return mapAlphabet(str, alph, newAlph);
+}
+
+export function additiveDecrypt(str, key) {
+  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const newAlph = R.concat(R.drop(key, alph), R.take(key, alph));
+  return mapAlphabet(str, newAlph, alph);
 }
 
 export function affineEncrypt(str, mKey, aKey) {
@@ -53,12 +59,6 @@ export function modInv(a, m)  {
   return (xgcd(a, m)[0] + m) % 26
 }
 
-export function additiveInv(str, key) {
-  const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const newAlph = R.concat(R.drop(key, alph), R.take(key, alph));
-  return mapAlphabet(str, newAlph, alph);
-}
-
 export function masc(str, key) {
   const alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   return mapAlphabet(str, alph, key);
@@ -75,4 +75,31 @@ export function multiplicativeEncrypt(str, key)  {
 
 export function multiplicativeDecrypt(str, key)  {
   return R.map(a => intToChar((charToInt(a) * modInv(key, 26)) % 26), str).join('')
+}
+
+export function getVigenereKey(str, key) {
+  if(key.length < str.length) {
+    const repTimes = Math.ceil(str.length / key.length);
+    key = R.take(str.length, key.repeat(repTimes));
+    return key.toString();
+  }
+}
+
+export function vigenereEncrypt(str, key) {
+  str = cleanupString(str);
+  key = getVigenereKey(str, cleanupString(key));
+  let outStr = "";
+  while(str.length > 0) {
+    let tempStr = str.substr(0,1);
+    str = str.substr(1);
+    let tempKey = charToInt(key.substr(0,1));
+    key = key.substr(1);
+
+    outStr += additiveEncrypt(tempStr, tempKey);
+  }
+  return outStr
+}
+
+export function vigenereDecrypt() {
+
 }

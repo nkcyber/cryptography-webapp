@@ -25,18 +25,22 @@ describe('multiplicative', () => {
 
 describe('additive', () => {
   it('correctly enciphers', () => {
-    expect(crypto.additive("testing", 3)).toEqual('WHVWLQJ')
+    expect(crypto.additiveEncrypt("testing", 3)).toEqual('WHVWLQJ')
   })
 
   it('correctly deciphers', () => {
-    expect(crypto.additiveInv("WHVWLQJ", 3)).toEqual('TESTING')
+    expect(crypto.additiveDecrypt("WHVWLQJ", 3)).toEqual('TESTING')
   })
-})
-
-it('alphabet shifts', () => {
-  expect(crypto.additive("abc", 5)).toEqual('fgh'.toUpperCase())
 })
 
 it('maps alphabets', () => {
   expect(crypto.mapAlphabet("abc", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "FGHIJKLMNOPQRSTUVWXYZABCDE")).toEqual('FGH')
+})
+
+it('builds vigenere key', () => {
+  expect(crypto.getVigenereKey("helloworld", "abc")).toEqual('abcabcabca')
+})
+
+it('vigenere encrypt', () => {
+  expect(crypto.vigenereEncrypt("cbaabc", "cba")).toEqual('ECACCC')
 })
