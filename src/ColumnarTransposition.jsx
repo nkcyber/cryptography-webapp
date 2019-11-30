@@ -102,7 +102,7 @@ const ColumnarTransposition = (props) => {
       <br/>
       <Button
         block
-        onClick={() => props.onBufferUpdate('decryption', props.encryptionFn(encryption, key), props.options.global)}
+        onClick={() => props.onBufferUpdate('decryption', crypto.columnarEncrypt(encryption, key), props.options.global)}
       >
         Encrypt
       </Button>
@@ -111,7 +111,7 @@ const ColumnarTransposition = (props) => {
       <br/>
       <Button
         block
-        onClick={() => props.onBufferUpdate('encryption', props.decryptionFn(decryption, key), props.options.global)}
+        onClick={() => props.onBufferUpdate('encryption', crypto.columnarDecrypt(decryption, key), props.options.global)}
       >
         Decrypt
       </Button>
