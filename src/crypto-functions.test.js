@@ -56,4 +56,9 @@ it('Frequency count', () => {
 it('Columnar encrypt', () => {
   expect(crypto.columnarEncrypt("fasdlfkja", "bcaa")).toEqual("SKQDJQFLAAFQ")
   expect(crypto.columnarEncrypt("fasdlfkjaa", "abc")).toEqual('FDKAALJQSFAQ')
+  expect(crypto.columnarEncrypt("yeet", "abc")).toEqual('FDKAALJQSFAQ')
+})
+
+it('Columnar decrypt', () => {
+  expect(crypto.columnarDecrypt("SKQDJQFLAAFQ", "bcaa")).toEqual("fasdlfkjaqqq")
 })

@@ -153,6 +153,32 @@ export function columnarEncrypt(str, key) {
   return out;
 }
 
-export function columnarDecrypt() {
-
+export function columnarDecrypt(ciphertext, keyword) {
+  let chars = "abcdefghijklmnopqrstuvwxyz";
+  var klen = keyword.length;
+  // first we put the text into columns based on keyword length
+  var cols = new Array(klen);
+  var colLength = ciphertext.length / klen;
+  for (let i = 0; i < klen; i++) cols[i] = ciphertext.substr(i * colLength, colLength);
+  // now we rearrange the columns so that they are in their unscrambled state
+  var newcols = new Array(klen);
+  let j = 0;
+  let i = 0;
+  while (j < klen) {
+    let t = keyword.indexOf(chars.charAt(i));
+    if (t >= 0) {
+      newcols[t] = cols[j++];
+      let arrkw = keyword.split("");
+      arrkw[t] = "_";
+      keyword = arrkw.join("");
+    } else i++;
+  }
+  // now read off the columns row-wise
+  var plaintext = "";
+  for (i = 0; i < colLength; i++) {
+    for (j = 0; j < klen; j++) {
+      plaintext += newcols[j].charAt(i);
+    }
+  }
+  return plaintext.toLowerCase();
 }
