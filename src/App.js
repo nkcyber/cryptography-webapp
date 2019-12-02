@@ -6,6 +6,7 @@ import {  withRouter,
 import { withLayout } from "./layout"
 import GenericCipher from "./GenericCipher"
 import AffineCipher from "./AffineCipher"
+import ColumnarTransposition from "./ColumnarTransposition"
 import FrequencyGraph from "./FrequencyGraph"
 import { produce } from 'immer';
 import logo from './logo.svg';
@@ -78,6 +79,22 @@ class App extends Component {
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
+            />
+          </Route>
+          <Route path="/columnar-transposition">
+            <ColumnarTransposition
+              buffers={this.state.buffers}
+              options={this.state.options}
+              onBufferUpdate={this.onBufferUpdate}
+            />
+          </Route>
+          <Route path="/vigenere-cipher">
+            <GenericCipher
+              buffers={this.state.buffers}
+              options={this.state.options}
+              onBufferUpdate={this.onBufferUpdate}
+              encryptionFn={(str, key) => crypto.vigenereEncrypt(str, key)}
+              decryptionFn={(str, key) => crypto.vigenereDecrypt(str, key)}
             />
           </Route>
         </Switch>
