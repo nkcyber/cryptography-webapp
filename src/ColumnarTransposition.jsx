@@ -6,6 +6,7 @@ import * as crypto from './crypto-functions.js'
 import {DragDropContext} from 'react-beautiful-dnd'
 import {Droppable} from 'react-beautiful-dnd'
 import {Draggable} from 'react-beautiful-dnd'
+import IOFields from './IOFields'
 import * as R from 'ramda';
 
 const Column = (props) => {
@@ -71,8 +72,8 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 const ColumnarTransposition = (props) => {
-  const encryption = ui.fetchBuffer(props, 'encryption')
-  const decryption = ui.fetchBuffer(props, 'decryption')
+  const input = ui.fetchBuffer(props, 'input')
+  const output = ui.fetchBuffer(props, 'output')
   const key = ui.fetchBuffer(props, 'key')
   const keyLength = key ? key.length : 1
   const [columnOrder, setColumns] = useState(R.times(R.identity, keyLength))
@@ -97,28 +98,18 @@ const ColumnarTransposition = (props) => {
 
   return (
     <>
-      <p className="text-left">Encryption Buffer:</p>
-      <textarea rows="6" cols="100" type="textarea" value={encryption} name="encryption" onChange={(e) => props.onBufferUpdate('encryption', e.target.value, props.options.global)}/>
-      <br/>
-      <Button
-        block
-        onClick={() => props.onBufferUpdate('decryption', crypto.columnarEncrypt(encryption, key), props.options.global)}
-      >
-        Encrypt
-      </Button>
-      <p className="text-left">Decryption Buffer:</p>
-      <textarea rows="6" cols="100" type="textarea" value={decryption} name="decryption" onChange={(e) => props.onBufferUpdate('decryption', e.target.value, props.options.global)}/>
-      <br/>
-      <Button
-        block
-        onClick={() => props.onBufferUpdate('encryption', crypto.columnarDecrypt(decryption, key), props.options.global)}
-      >
-        Decrypt
-      </Button>
+      <IOFields
+        input={input}
+        output={output}
+        encryptionFn={() => props.onBufferUpdate('output', crypto.columnarEncrypt(input, key), props.options.global)}
+        decryptionFn={() => props.onBufferUpdate('output', crypto.columnarDecrypt(input, key), props.options.global)}
+        onInputChange={(e) => props.onBufferUpdate('input', e.target.value, props.options.global)}
+        onOutputChange={(e) => props.onBufferUpdate('output', e.target.value, props.options.global)}
+      />
       <p className="text-left">Key:</p>
       <input size="100" type="text" value={key} name="key" onChange={updateKey}/>
-      {decryption && <Columns
-        str={decryption}
+      {input && <Columns
+        str={input}
         columnOrder={columnOrder}
         columns={keyLength}
         onDragEnd={onDragEnd}
