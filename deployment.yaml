@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptography-webapp
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cryptography-webapp
+  template:
+    metadata:
+      labels:
+        app: cryptography-webapp
+    spec:
+      containers:
+      - name: cryptography-webapp
+        image: docker.pkg.github.com/nkcyber/cryptography-webapp/crypto-webapp:${CICD_GIT_COMMIT}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: frontend
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "0.25"
+      imagePullSecrets:
+      - name: github

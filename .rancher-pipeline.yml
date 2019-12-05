@@ -1,0 +1,19 @@
+stages:
+- name: build webapp
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: nkcyber/cryptography-webapp/crypto-webapp:${CICD_GIT_COMMIT}
+      pushRemote: true
+      registry: docker.pkg.github.com
+- name: deploy webapp
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+    when:
+      branch:
+        include:
+        - master
+timeout: 60
+notification: {}
