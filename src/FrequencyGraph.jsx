@@ -13,7 +13,7 @@ const getGraphData = (str) => {
 }
 
 const FrequencyGraph = (props) => {
-  const data = getGraphData(props.buffers['global.encryption'])
+  const data = getGraphData(props.buffers['global.input'])
   return (
     <>
       <h4>Frequency Analysis</h4>

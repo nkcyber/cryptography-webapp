@@ -18,7 +18,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      buffers: {'global.encryption': ""},
+      buffers: {'global.input': ""},
       options: { 'global': true },
     };
     this.onBufferUpdate = this.onBufferUpdate.bind(this);
