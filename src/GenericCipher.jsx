@@ -21,7 +21,7 @@ const GenericCipher = (props) => {
         onOutputChange={(e) => props.onBufferUpdate('output', e.target.value, props.options.global)}
       />
       <p className="text-left">Key:</p>
-      <input size="100" type="text" value={key} name="key" onChange={(e) => props.onBufferUpdate('key', e.target.value, props.options.global)}/>
+      <input size="100" type="text" value={key} name="key" onChange={(e) => props.onBufferUpdate('key', e.target.value, props.options.global)} style={{width: "100%"}}/>
     </>
   );
 };

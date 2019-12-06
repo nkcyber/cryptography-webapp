@@ -26,11 +26,11 @@ function withLayout (WrappedComponent) {
       return (
         <>
           <Header/>
-          <div style={{ width: '90vw', height: '80vh', marginLeft: 'auto', marginRight: 'auto', maxWidth: "1280px"}} className="text-center">
-            <div style={{float:"left"}}>
+          <div style={{ width: '90vw', height: '80vh', marginLeft: 'auto', marginRight: 'auto', maxWidth: "1280px", display: "flex", flexWrap: 'wrap'}} className="text-center">
+            <div>
               <WrappedComponent {...this.props} />
             </div>
-            <div style={{float: "right"}}>
+            <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
               <SideBar/>
             </div>
           </div>
