@@ -22,10 +22,17 @@ const GenericCipher = (props) => {
         onInputChange={(e) => props.onBufferUpdate('input', e.target.value, props.options.global)}
         onOutputChange={(e) => props.onBufferUpdate('output', e.target.value, props.options.global)}
       />
-      <p className="text-left">A:</p>
-      <input size="100" type="text" value={keyA} name="key" onChange={(e) => props.onBufferUpdate('keyA', e.target.value, props.options.global)}/>
-      <p className="text-left">M:</p>
-      <input size="100" type="text" value={keyM} name="key" onChange={(e) => props.onBufferUpdate('keyM', e.target.value, props.options.global)}/>
+      <br/>
+      <div style={{display: "flex", flexWrap: 'wrap'}}>
+        <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
+          <label className="text-left">A:</label>
+          <input type="number" value={keyA} name="key" onChange={(e) => props.onBufferUpdate('keyA', e.target.value, props.options.global)}/>
+        </div>
+        <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
+          <label className="text-left">M:</label>
+          <input type="number" value={keyM} name="key" onChange={(e) => props.onBufferUpdate('keyM', e.target.value, props.options.global)}/>
+        </div>
+      </div>
     </>
   );
 };
