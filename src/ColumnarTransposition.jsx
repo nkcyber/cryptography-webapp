@@ -98,6 +98,7 @@ const ColumnarTransposition = (props) => {
 
   return (
     <>
+      <h4>Columnar Transposition</h4>
       <IOFields
         input={input}
         output={output}

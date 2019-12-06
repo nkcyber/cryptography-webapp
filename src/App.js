@@ -47,6 +47,7 @@ class App extends Component {
         <Switch>
           <Route path="/caesar-cipher">
             <GenericCipher
+              title="Caesar Cipher"
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
@@ -62,6 +63,7 @@ class App extends Component {
           </Route>
           <Route path="/multiplicative-cipher">
             <GenericCipher
+              title="Multiplicative Cipher"
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
@@ -71,6 +73,7 @@ class App extends Component {
           </Route>
           <Route path="/masc">
             <GenericCipher
+              title="MASC"
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}
@@ -94,6 +97,7 @@ class App extends Component {
           </Route>
           <Route path="/vigenere-cipher">
             <GenericCipher
+              title="Vigenère Cipher"
               buffers={this.state.buffers}
               options={this.state.options}
               onBufferUpdate={this.onBufferUpdate}

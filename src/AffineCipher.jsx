@@ -13,6 +13,7 @@ const GenericCipher = (props) => {
   const keyM = ui.fetchBuffer(props, 'keyM')
   return (
     <>
+      <h4>Affine Cipher</h4>
       <IOFields
         input={input}
         output={output}

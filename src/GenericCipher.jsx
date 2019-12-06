@@ -11,6 +11,7 @@ const GenericCipher = (props) => {
   const key = ui.fetchBuffer(props, 'key')
   return (
     <>
+      <h4>{props.title}</h4>
       <IOFields
         input={input}
         output={output}
