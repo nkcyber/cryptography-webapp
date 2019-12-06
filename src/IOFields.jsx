@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap/'
+import { Button, ButtonGroup } from 'react-bootstrap/'
 
 const IOFields = (props) => {
   const input = props.input
@@ -9,21 +9,23 @@ const IOFields = (props) => {
       <p className="text-left">Input Buffer:</p>
       <textarea rows="6" cols="100" type="textarea" value={input} name="encryption" onChange={props.onInputChange}/>
       <br/>
-      <Button
-        block
-        onClick={props.encryptionFn}
-      >
-        Encrypt
-      </Button>
+      <ButtonGroup className="btn-block" >
+        <Button
+
+          onClick={props.encryptionFn}
+        >
+          Encrypt
+        </Button>
+        <Button
+          
+          onClick={props.decryptionFn}
+        >
+          Decrypt
+        </Button>
+      </ButtonGroup>
       <p className="text-left">Output Buffer:</p>
       <textarea rows="6" cols="100" type="textarea" value={output} name="output" onChange={props.onOutputChange}/>
       <br/>
-      <Button
-        block
-        onClick={props.decryptionFn}
-      >
-        Decrypt
-      </Button>
     </>
   );
 };
