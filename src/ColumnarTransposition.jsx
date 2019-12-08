@@ -113,7 +113,7 @@ const ColumnarTransposition = (props) => {
       <p className="text-left">Key:</p>
       <input size="100" type="text" value={key} name="key" onChange={updateKey}/>
       {input && <Columns
-        str={input}
+        str={crypto.cleanupString(input)}
         columnOrder={columnOrder}
         columns={keyLength}
         onDragEnd={onDragEnd}
