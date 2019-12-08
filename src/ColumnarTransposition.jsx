@@ -12,6 +12,9 @@ import * as R from 'ramda';
 const Column = (props) => {
   return (
     <ListGroup as="ul" style={{maxWidth: '50px', width: '50px'}}>
+      <ListGroup.Item as="li" style={{padding: 0}}>
+        {props.index}
+      </ListGroup.Item>
       {props.str.split('').map(c => (
         <ListGroup.Item as="li" style={{padding: 0}}>
           {c}
@@ -35,7 +38,7 @@ const Columns = (props) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <Column str={index+str}/>
+          <Column index={index} str={str}/>
         </div>
       )}
     </Draggable>
