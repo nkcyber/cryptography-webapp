@@ -182,3 +182,7 @@ export function columnarDecrypt(ciphertext, keyword) {
   }
   return plaintext.toLowerCase();
 }
+
+export function factorInteger(number) {
+  return Array.from(Array(number + 1), (_, i) => i).filter(i => number % i === 0)
+}

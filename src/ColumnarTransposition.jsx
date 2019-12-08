@@ -82,6 +82,7 @@ const ColumnarTransposition = (props) => {
   const output = ui.fetchBuffer(props, 'output')
   const key = ui.fetchBuffer(props, 'key')
   const keyLength = key ? key.length : 1
+  const cleanInput = crypto.cleanupString(input)
   const [columnOrder, setColumns] = useState(R.times(R.identity, keyLength))
   const updateKey = (e) => {
     props.onBufferUpdate('key', e.target.value, props.options.global)
@@ -113,6 +114,9 @@ const ColumnarTransposition = (props) => {
         onInputChange={(e) => props.onBufferUpdate('input', e.target.value, props.options.global)}
         onOutputChange={(e) => props.onBufferUpdate('output', e.target.value, props.options.global)}
       />
+    {cleanInput && cleanInput.length > 0 && <p className="text-left">
+        {`Input has length ${cleanInput.length} which has factors of ${crypto.factorInteger(cleanInput.length)}`}
+      </p>}
       <p className="text-left">Key:</p>
       <input size="100" type="text" value={key} name="key" onChange={updateKey}/>
       {input && <Columns
