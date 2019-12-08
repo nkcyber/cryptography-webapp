@@ -26,8 +26,11 @@ const Column = (props) => {
 
 
 const Columns = (props) => {
+  if (!Number.isInteger(props.str.length / props.columns)) {
+    return(<p>Key Length does not divide length of string evenly</p>)
+  }
 
-  const columns = crypto.blockFormat(props.str, Math.ceil(props.str.length / props.columns)).split(' ').map((str, index) => {
+  const columns = crypto.blockFormat(props.str, props.str.length / props.columns).split(' ').map((str, index) => {
     const columnIndex = props.columnOrder.indexOf(index)
     return {index: index, data: (
     <Draggable key={""+columnIndex} draggableId={""+columnIndex} index={columnIndex}>
