@@ -109,8 +109,8 @@ const ColumnarTransposition = (props) => {
       <IOFields
         input={input}
         output={output}
-        encryptionFn={() => props.onBufferUpdate('output', crypto.columnarEncrypt(input, key), props.options.global)}
-        decryptionFn={() => props.onBufferUpdate('output', crypto.columnarDecrypt(input, key), props.options.global)}
+        encryptionFn={() => props.onBufferUpdate('output', crypto.columnarEncrypt(cleanInput, key), props.options.global)}
+        decryptionFn={() => props.onBufferUpdate('output', crypto.columnarDecrypt(cleanInput, key), props.options.global)}
         onInputChange={(e) => props.onBufferUpdate('input', e.target.value, props.options.global)}
         onOutputChange={(e) => props.onBufferUpdate('output', e.target.value, props.options.global)}
       />
