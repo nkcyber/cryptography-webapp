@@ -27,7 +27,7 @@ class App extends Component {
   onBufferUpdate(bufferName, contents, global=false) {
     this.setState(produce((draft) => {
       if (global) {
-        if (bufferName == 'output') {
+        if (bufferName == 'output' && contents != '') {
           draft.buffers[`global.${bufferName}`] = crypto.blockFormat(contents)
         } else {
           draft.buffers[`global.${bufferName}`] = contents
